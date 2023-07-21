@@ -11,17 +11,10 @@ public class MenuUIHandler : MonoBehaviour
     public TMP_InputField nameField;
     public TextMeshProUGUI warning;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
 
     public void StorePlayerName(string inputName)
     {
-        MainManager.Instance.yourName = inputName;
+        MainManager.Instance.yourName = inputName; //DATA PERSISTENCE
     }
     public void StartScene()
     {

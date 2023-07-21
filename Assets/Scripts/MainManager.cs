@@ -16,12 +16,7 @@ public class MainManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject); //DATA PERSISTENCE
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    public void SetName(string name)
+    public void SetName(string name) //ABSTRACTION
     {
         welcome.text = "Bienvenue, " + name + " !";
     }

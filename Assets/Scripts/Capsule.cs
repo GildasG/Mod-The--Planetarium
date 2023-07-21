@@ -16,27 +16,27 @@ public class Capsule : Cube
     // Update is called once per frame
     void Update()
     {
-        RandomRotation(cube, OrbitSpeed(range));
+        RandomRotation(cube, OrbitSpeed(range)); //INHERITANCE (method and variable)
 
         if (colorCount % 5 == 0)
         {
-            ChangeColor(capsRenderer);
+            ChangeColor(capsRenderer); //INHERITANCE (method)
         }
 
-        if (CheckScale(cube, Sphere.newScale))
+        if (CheckScale(cube, Sphere.newScale)) //INHERITANCE (variables)
         {
             RandomRotation(range);
         }
     }
-    float OrbitSpeed (float range)
+    float OrbitSpeed (float range) //ABSTRACTION
     {
-        return Random.Range(range/2, range);
+        return Random.Range(range/1.5f, range);
     }
-    public override void RandomRotation(float angle)
+    public override void RandomRotation(float angle) //POLYMORPHISM
     {
-        transform.Rotate(angle/12, 0, 0);
+        transform.Rotate(angle/13, 0, 0);
     }
-    public bool CheckScale(GameObject g, float scale)
+    public bool CheckScale(GameObject g, float scale) //ABSTRACTION
     {
         float x = g.transform.localScale.x;
         if (x > scale)

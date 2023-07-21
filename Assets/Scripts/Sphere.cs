@@ -10,7 +10,7 @@ public class Sphere : Cube
     public GameObject target;
     private GameObject capObj;
     private float rotSpeed;
-    public static float newScale {get; private set;}
+    public static float newScale {get; private set;} //ENCAPSULATION
     private bool onRot = false;
 
 
@@ -26,12 +26,12 @@ public class Sphere : Cube
     // Update is called once per frame
     void Update()
     {
-        CheckDistance(cube, capObj);
+        CheckDistance(cube, capObj); //INHERITANCE (variable 'cube')
         RandomRotation(target, rotSpeed);
         ChangeScale();
 
     }
-    public void CheckDistance(GameObject cube, GameObject caps)
+    public void CheckDistance(GameObject cube, GameObject caps)   //ABSTRACTION
     {
         float cubeDist = Vector3.Distance(transform.position, cube.transform.position);
         float capsDist = Vector3.Distance(transform.position, caps.transform.position);
@@ -46,7 +46,7 @@ public class Sphere : Cube
             rotSpeed = capsDist * 10;
         }
     }
-    public override void RandomRotation(GameObject target, float speedRange)
+    public override void RandomRotation(GameObject target, float speedRange)  //POLYMORPHISME
     {
 
         Debug.Log("center : " + target + "speed : " + rotSpeed);
@@ -60,14 +60,13 @@ public class Sphere : Cube
             }
             else
             {
-                ChangeColor(sphRend);
+                ChangeColor(sphRend); //INHERITANCE
             }
         }
         else
         {
             if (Input.GetMouseButtonDown(0))
             {
-
                 onRot = false;
             }
             else
@@ -80,7 +79,7 @@ public class Sphere : Cube
 
     }
 
-    public override void ChangeScale()
+    public override void ChangeScale() //POLYMORPHISM
     {
         newScale = 3.0f;
         if (target != cube)

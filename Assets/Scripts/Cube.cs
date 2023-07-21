@@ -10,8 +10,8 @@ public class Cube : MonoBehaviour
     public float delay = 1.0f;
     private float interval = 2.0f;
 
-    private float m_minScale = 0.5f;
-    public float minScale
+    private float m_minScale = 0.5f; //ENCAPSULATION BACKING FIELD
+    public float minScale //ENCAPSULATION
     {
         get { return m_minScale; }
         set
@@ -23,8 +23,8 @@ public class Cube : MonoBehaviour
             m_minScale = value;
         }
     }
-    private float m_maxScale = 5.0f;
-    public float maxScale
+    private float m_maxScale = 5.0f; //ENCAPSULATION BACKING FIELD
+    public float maxScale //ENCAPSULATION
     {
         get { return m_maxScale; }
         set
@@ -37,8 +37,8 @@ public class Cube : MonoBehaviour
         }
     }
 
-    public static int scaleCount { get; private set; }
-    protected static int colorCount { get; private set; }
+    public static int scaleCount { get; private set; } //ENCAPSULATION
+    protected static int colorCount { get; private set; } //ENCAPSULATION
 
     private float colorRange = 1.0f;
 
@@ -61,7 +61,7 @@ public class Cube : MonoBehaviour
         }
 
     }
-    public virtual void ChangeColor(MeshRenderer renderer)
+    public virtual void ChangeColor(MeshRenderer renderer) //ABSTRACTION // POLYMORPHISM-Preparation
     {
         Material material = renderer.material;
         float changeColorR = Random.Range(0.0f, colorRange);
@@ -70,25 +70,25 @@ public class Cube : MonoBehaviour
         float changeColorA = Random.Range(0.0f, colorRange);
         material.color = new Color(changeColorR, changeColorG, changeColorB, changeColorA);
     }
-    public virtual void ChangeScale()
+    public virtual void ChangeScale() //ABSTRACTION //POLYMORPHISME-Preparation
     {
         transform.localScale = Vector3.one * Random.Range(m_minScale, m_maxScale);
         scaleCount++;
     }
 
-    public virtual void RandomRotation(float angle)
+    public virtual void RandomRotation(float angle) //ABSTRACTION //POLYMORPHISM-Preparation
     {
         float x = Random.Range(-angle, angle);
         float y = Random.Range(-angle, angle);
         float z = Random.Range(-angle, angle);
         transform.Rotate(x, y, z);
     }
-    public virtual void RandomRotation(GameObject target, float speedRange)
+    public virtual void RandomRotation(GameObject target, float speedRange) //ABSTRACTION //POLYMORPHISM-Preparation
     {
         float rotationSpeed = Random.Range(speedRange / 5, speedRange);
         transform.RotateAround(target.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
     }
-    IEnumerator DelayColor()
+    IEnumerator DelayColor() //ABSTRACTION
     {
         ChangeColor(Renderer);
         colorCount++;
